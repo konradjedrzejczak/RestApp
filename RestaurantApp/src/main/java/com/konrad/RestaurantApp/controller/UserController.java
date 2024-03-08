@@ -1,0 +1,38 @@
+package com.konrad.RestaurantApp.controller;
+
+import com.konrad.RestaurantApp.dto.UserDTO;
+import com.konrad.RestaurantApp.entity.User;
+import com.konrad.RestaurantApp.service.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+@Validated
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostMapping
+    public ResponseEntity<UserDTO> createUser(@Validated @RequestBody UserDTO userDTO) {
+        userService.createUser(userDTO);
+        return ResponseEntity.ok(userDTO);
+    }
+
+    @GetMapping
+    public List<User> findAllUsers() {
+        return userService.findAllUsers();
+    }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+    }
+}
