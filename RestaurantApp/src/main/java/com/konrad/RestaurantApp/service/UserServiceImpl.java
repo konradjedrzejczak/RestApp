@@ -1,6 +1,6 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.Exception.ServiceException;
+import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.dto.UserDTO;
 import com.konrad.RestaurantApp.entity.User;
 import com.konrad.RestaurantApp.repository.UserRepository;

@@ -1,6 +1,6 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.Exception.ServiceException;
+import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.dto.CoffeeDTO;
 import com.konrad.RestaurantApp.entity.Coffee;
 import com.konrad.RestaurantApp.entity.Espresso;

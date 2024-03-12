@@ -1,4 +1,4 @@
-package com.konrad.RestaurantApp.Exception;
+package com.konrad.RestaurantApp.exception;
 
 public class ServiceException extends RuntimeException{
 
