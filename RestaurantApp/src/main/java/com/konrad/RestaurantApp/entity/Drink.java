@@ -1,12 +1,12 @@
 package com.konrad.RestaurantApp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,4 +25,7 @@ public class Drink {
         this.name = name;
         this.price = price;
     }
+
+    @ManyToMany(mappedBy = "drinks")
+    private List<Orders> orders = new ArrayList<>();
 }

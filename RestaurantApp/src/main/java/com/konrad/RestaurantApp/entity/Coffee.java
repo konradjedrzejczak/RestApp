@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -27,4 +30,7 @@ public class Coffee {
         this.lactose = lactose;
         this.grindType = grindType;
     }
+
+    @ManyToMany(mappedBy = "coffees")
+    private List<Orders> orders = new ArrayList<>();
 }

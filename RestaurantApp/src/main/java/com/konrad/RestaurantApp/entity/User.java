@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users_list")
 @NoArgsConstructor
@@ -26,9 +29,11 @@ public class User {
         this.email = email;
     }
 
-
     public boolean validName() {
         return this.name != null && this.name.length() >= 3;
     }
+
+    @OneToMany(mappedBy = "user")
+    private List<Orders> orders = new ArrayList<>();
 
 }
