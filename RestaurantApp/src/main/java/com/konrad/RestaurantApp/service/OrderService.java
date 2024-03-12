@@ -36,9 +36,7 @@ public class OrderService {
         /*List<Drink> drinks = drinkRepository.findAllById(drinkId);*/
         List<Coffee> coffees = coffeeRepository.findAllById(coffeeId);
 
-        Orders orders = new Orders();
-        orders.setUser(user);
-        orders.getCoffees().addAll(coffees);
+        Orders orders = new Orders(user, coffees);
        /* orders.getDrinks().addAll(drinks);*/
 
         orderRepository.save(orders);

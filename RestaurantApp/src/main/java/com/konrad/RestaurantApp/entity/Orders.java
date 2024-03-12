@@ -22,13 +22,10 @@ public class Orders {
     @ManyToMany
     private List<Coffee> coffees = new ArrayList<>();
 
-    @ManyToMany
-    private List<Drink> drinks = new ArrayList<>();
 
-    public Orders(User user, List<Coffee> coffees, List<Drink> drinks) {
+    public Orders(User user, List<Coffee> coffees) {
         this.user = user;
         this.coffees = coffees;
-        this.drinks = drinks;
     }
 
     public Orders() {

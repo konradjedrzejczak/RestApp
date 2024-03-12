@@ -26,6 +26,6 @@ public class Drink {
         this.price = price;
     }
 
-    @ManyToMany(mappedBy = "drinks")
-    private List<Orders> orders = new ArrayList<>();
+//    @ManyToMany(mappedBy = "drinks")
+//    private List<Orders> orders = new ArrayList<>();
 }
