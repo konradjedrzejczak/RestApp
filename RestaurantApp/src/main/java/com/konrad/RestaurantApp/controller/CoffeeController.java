@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/coffees")
 public class CoffeeController {
@@ -21,6 +23,11 @@ public class CoffeeController {
     }
 
     @GetMapping
+    public List<Coffee> getAllCoffees() {
+       return coffeeService.getAllCoffee();
+    }
+
+    @GetMapping("/{id}")
     public Coffee getCoffeeById(@PathVariable Long id) {
         return coffeeService.getCoffeeById(id);
     }

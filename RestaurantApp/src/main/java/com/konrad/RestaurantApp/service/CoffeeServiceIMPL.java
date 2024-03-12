@@ -9,6 +9,7 @@ import com.konrad.RestaurantApp.repository.CoffeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +26,11 @@ public class CoffeeServiceIMPL implements CoffeeService {
     public Coffee getCoffeeById(Long id) {
         return coffeeRepository.findById(id)
                 .orElseThrow(() -> new ServiceException("Coffe not found"));
+    }
+
+    @Override
+    public List<Coffee> getAllCoffee() {
+       return coffeeRepository.findAll();
     }
 
     @Override
