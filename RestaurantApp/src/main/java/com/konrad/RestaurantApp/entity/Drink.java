@@ -1,5 +1,6 @@
 package com.konrad.RestaurantApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Drink {
         this.price = price;
     }
 
-//    @ManyToMany(mappedBy = "drinks")
-//    private List<Orders> orders = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "drinks")
+    private List<Orders> orders = new ArrayList<>();
 }

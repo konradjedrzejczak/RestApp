@@ -1,6 +1,7 @@
 package com.konrad.RestaurantApp.service;
 
 import com.konrad.RestaurantApp.entity.Coffee;
+import com.konrad.RestaurantApp.entity.Drink;
 import com.konrad.RestaurantApp.entity.Orders;
 import com.konrad.RestaurantApp.entity.User;
 import com.konrad.RestaurantApp.exception.ServiceException;
@@ -31,18 +32,18 @@ public class OrderService {
     @Autowired
     private UserRepository userRepository;
 
-    public Orders createOrder(Long userId, Long coffeeId /*, *//*List<Long> drinkId*/) {
+    public Orders createOrder(Long userId, Long coffeeId, Long drinkId) {
 
         User user = userRepository.findById(userId).
                 orElseThrow(() -> new ServiceException("User not Found"));
 
-        /*List<Drink> drinks = drinkRepository.findAllById(drinkId);*/
         Coffee coffee = coffeeRepository.findById(coffeeId)
                 .orElseThrow(() -> new ServiceException("Coffee not Found"));
 
+        Drink drink = drinkRepository.findById(drinkId)
+                .orElseThrow(() -> new ServiceException("Drink not found"));
 
-        Orders orders = new Orders(user, coffee);
-        /* orders.getDrinks().addAll(drinks);*/
+        Orders orders = new Orders(user, coffee, drink);
 
         orderRepository.save(orders);
         return orders;

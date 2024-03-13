@@ -18,6 +18,6 @@ public class OrderController {
 
     @PostMapping
     public Orders createOrder(@RequestBody OrderRequest orderRequest) {
-        return orderService.createOrder(orderRequest.getUserId(), orderRequest.getCoffeeId());
+        return orderService.createOrder(orderRequest.getUserId(), orderRequest.getCoffeeId(), orderRequest.getDrinkId());
     }
 }

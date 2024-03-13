@@ -22,10 +22,13 @@ public class Orders {
     @ManyToOne
     private Coffee coffees;
 
+    @ManyToOne
+    private Drink drinks;
 
-    public Orders(User user, Coffee coffees) {
+    public Orders(User user, Coffee coffees, Drink drinks) {
         this.user = user;
         this.coffees = coffees;
+        this.drinks = drinks;
     }
 
     public Orders() {
