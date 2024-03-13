@@ -5,7 +5,6 @@ import com.konrad.RestaurantApp.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 import com.konrad.RestaurantApp.entity.Orders;
 
-
 @RestController
 @RequestMapping("/orders")
 public class OrderController {

@@ -28,6 +28,6 @@ public class Drink {
     }
 
     @JsonIgnore
-    @OneToMany(mappedBy = "drinks")
+    @ManyToMany(mappedBy = "drinks")
     private List<Orders> orders = new ArrayList<>();
 }
