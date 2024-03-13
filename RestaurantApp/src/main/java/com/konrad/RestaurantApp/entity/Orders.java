@@ -19,11 +19,11 @@ public class Orders {
     @ManyToOne
     private User user;
 
-    @ManyToMany
-    private List<Coffee> coffees = new ArrayList<>();
+    @ManyToOne
+    private Coffee coffees;
 
 
-    public Orders(User user, List<Coffee> coffees) {
+    public Orders(User user, Coffee coffees) {
         this.user = user;
         this.coffees = coffees;
     }

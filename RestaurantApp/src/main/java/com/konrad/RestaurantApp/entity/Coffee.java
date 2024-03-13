@@ -1,5 +1,6 @@
 package com.konrad.RestaurantApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class Coffee {
         this.grindType = grindType;
     }
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "coffees")
     private List<Orders> orders = new ArrayList<>();
 }
