@@ -3,11 +3,11 @@
 This project is a simple RESTful web application for managing a restaurant's menu and orders.
 
 
-Description
+# Description
 
 The Restaurant App allows users to manage coffees, drinks, users, and orders. It provides endpoints for adding, retrieving, updating, and deleting data related to these entities.
 
-Technologies Used
+# Technologies Used
 * Java
 * Spring Boot
 * Spring Data JPA
@@ -15,7 +15,7 @@ Technologies Used
 * Lombok
 * PostgreSQL
 
-Installation
+# Installation
 1. Clone the repository:
 git clone https://github.com/yourusername/RestaurantApp.git 
 2. Navigate to the project directory:
@@ -25,7 +25,7 @@ mvn clean install
 4. Run the application:
 java -jar target/RestaurantApp.jar 
 
-Usage
+# Usage
 
 Once the application is running, you can access the API endpoints using tools like cURL, Postman, or any web browser.
 
