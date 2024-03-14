@@ -13,13 +13,13 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @OneToMany
     private User user;
 
-    @ManyToOne
+    @OneToMany
     private Coffee coffees;
 
-    @ManyToOne
+    @OneToMany
     private Drink drinks;
 
     public Orders(User user, Coffee coffees, Drink drinks) {
