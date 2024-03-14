@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,8 +37,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User viewUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ServiceException("Wrong User id"));
+    }
+
+    @Override
     public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+        Optional<User> byId = userRepository.findById(userId);
+        boolean present = byId.isPresent();
+        if (present) {
+            userRepository.deleteById(userId);
+        } else {
+            throw new ServiceException("User not found");
+        }
     }
 }
 
