@@ -1,4 +1,4 @@
-Restaurant App
+## Restaurant App
 
 This project is a simple RESTful web application for managing a restaurant's menu and orders.
 
