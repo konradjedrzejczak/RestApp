@@ -17,17 +17,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
+    private final DrinkRepository drinkRepository;
+    private final CoffeeRepository coffeeRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private DrinkRepository drinkRepository;
-
-    @Autowired
-    private CoffeeRepository coffeeRepository;
-
-    @Autowired
-    private UserRepository userRepository;
+    public OrderService(OrderRepository orderRepository, DrinkRepository drinkRepository, CoffeeRepository coffeeRepository, UserRepository userRepository) {
+        this.orderRepository = orderRepository;
+        this.drinkRepository = drinkRepository;
+        this.coffeeRepository = coffeeRepository;
+        this.userRepository = userRepository;
+    }
 
     public Orders createOrder(Long userId, Long coffeeId, Long drinkId) {
 
