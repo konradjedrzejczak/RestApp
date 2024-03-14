@@ -13,20 +13,16 @@ Technologies Used
 * Spring Data JPA
 * Hibernate
 * Lombok
-* H2 Database (for development)
+* PostgreSQL
 
 Installation
 1. Clone the repository:
-bashCopy code
 git clone https://github.com/yourusername/RestaurantApp.git 
 2. Navigate to the project directory:
-bashCopy code
 cd RestaurantApp 
 3. Build the project using Maven:
-Copy code
 mvn clean install 
 4. Run the application:
-Copy code
 java -jar target/RestaurantApp.jar 
 
 Usage
