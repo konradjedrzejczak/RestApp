@@ -22,10 +22,13 @@ public class Orders {
     @OneToMany
     private Drink drinks;
 
-    public Orders(User user, Coffee coffees, Drink drinks) {
+    private double price;
+
+    public Orders(User user, Coffee coffees, Drink drinks, double price) {
         this.user = user;
         this.coffees = coffees;
         this.drinks = drinks;
+        this.price = price;
     }
 
     public Orders() {

@@ -41,7 +41,8 @@ public class OrderService {
         Drink drink = drinkRepository.findById(drinkId)
                 .orElseThrow(() -> new ServiceException("Drink not found"));
 
-        Orders orders = new Orders(user, coffee, drink);
+        double totalPrice = coffee.calculatePrice() + drink.getPrice();
+        Orders orders = new Orders(user, coffee, drink, totalPrice);
 
         orderRepository.save(orders);
         return orders;
