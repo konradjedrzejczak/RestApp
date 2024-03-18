@@ -25,7 +25,6 @@ public class Coffee {
     private int sugar;
     private boolean lactose;
     private int grindType;
-    private double price;
 
     public Coffee(boolean milk, int sugar, boolean lactose, int grindType) {
         this.milk = milk;
