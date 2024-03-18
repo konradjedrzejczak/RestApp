@@ -31,4 +31,14 @@ public class OrderController {
     public Orders createOrder(@RequestBody OrderRequest orderRequest) {
         return orderService.createOrder(orderRequest.getUserId(), orderRequest.getCoffeeId(), orderRequest.getDrinkId());
     }
+
+    @PostMapping("/{orderId}/confirm")
+    public Orders confirmOrder(@PathVariable Long orderId) {
+        return orderService.confirmOrder(orderId);
+    }
+
+    @PostMapping("/{orderId}/cancel")
+    public Orders cancelOrder(@PathVariable Long orderId) {
+        return orderService.cancelOrder(orderId);
+    }
 }

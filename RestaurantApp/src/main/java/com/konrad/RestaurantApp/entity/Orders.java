@@ -25,6 +25,9 @@ public class Orders {
     @Column(nullable = true)
     private double price;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     public Orders(User user, Coffee coffees, Drink drinks, double price) {
         this.user = user;
         this.coffees = coffees;

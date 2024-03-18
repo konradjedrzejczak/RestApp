@@ -1,9 +1,6 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.entity.Coffee;
-import com.konrad.RestaurantApp.entity.Drink;
-import com.konrad.RestaurantApp.entity.Orders;
-import com.konrad.RestaurantApp.entity.User;
+import com.konrad.RestaurantApp.entity.*;
 import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.repository.CoffeeRepository;
 import com.konrad.RestaurantApp.repository.DrinkRepository;
@@ -34,7 +31,6 @@ public class OrderService {
     }
 
     public Orders createOrder(Long userId, Long coffeeId, Long drinkId) {
-
         User user = userRepository.findById(userId).
                 orElseThrow(() -> new ServiceException("User not Found"));
 
@@ -59,4 +55,22 @@ public class OrderService {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new ServiceException("Order not found with id: " + id));
     }
+
+    public Orders confirmOrder(Long orderId) {
+        Orders order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ServiceException("Order not found"));
+
+        order.setOrderStatus(OrderStatus.CONFIRMED);
+        return orderRepository.save(order);
+    }
+
+    public Orders cancelOrder(Long orderId) {
+        Orders order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ServiceException("Order not found"));
+
+        order.setOrderStatus(OrderStatus.CANCELED);
+        orderRepository.delete(order);
+        return order;
+    }
+
 }
