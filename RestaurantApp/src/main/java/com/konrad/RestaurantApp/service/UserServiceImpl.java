@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(UserDTO userDTO) throws ServiceException {
 
-        User user = new User(userDTO.getName(), userDTO.getEmail());
+        User user = new User(userDTO.getName(), userDTO.getEmail(), userDTO.getPhoneNumber());
         if (user.validName()) {
             return userRepository.save(user);
         } else {

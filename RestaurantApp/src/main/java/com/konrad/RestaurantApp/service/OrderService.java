@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class OrderService {
@@ -21,6 +23,7 @@ public class OrderService {
     private final DrinkRepository drinkRepository;
     private final CoffeeRepository coffeeRepository;
     private final UserRepository userRepository;
+
 
     @Autowired
     public OrderService(OrderRepository orderRepository, DrinkRepository drinkRepository, CoffeeRepository coffeeRepository, UserRepository userRepository) {
@@ -46,5 +49,14 @@ public class OrderService {
 
         orderRepository.save(orders);
         return orders;
+    }
+
+    public List<Orders> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public Orders getOrderById(Long id) {
+        return orderRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("Order not found with id: " + id));
     }
 }

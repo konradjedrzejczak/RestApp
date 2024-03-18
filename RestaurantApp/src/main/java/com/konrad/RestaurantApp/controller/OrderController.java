@@ -5,6 +5,8 @@ import com.konrad.RestaurantApp.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 import com.konrad.RestaurantApp.entity.Orders;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -13,6 +15,16 @@ public class OrderController {
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
+    }
+
+    @GetMapping
+    public List<Orders> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+
+    @GetMapping("/{id}")
+    public Orders getOrderById(@PathVariable Long id) {
+        return orderService.getOrderById(id);
     }
 
     @PostMapping
