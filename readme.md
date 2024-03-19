@@ -6,6 +6,9 @@ This project is a simple RESTful web application for managing a restaurant's men
 ## Description
 
 The Restaurant App allows users to manage coffees, drinks, users, and orders. It provides endpoints for adding, retrieving, updating, and deleting data related to these entities.
+- Adding, viewing, and deleting coffees, drinks, and meals.
+- Creating, confirming, and canceling orders.
+- Managing customers.
 
 ## Technologies Used
 * Java
@@ -43,8 +46,18 @@ Drink Endpoints
 * POST /api/drink: Add a new drink
 * DELETE /api/drink/{drinkId}: Delete a drink by ID
 
+Meal Endpoints
+* POST /api/meal/add: Add a new meal.
+* GET /api/meal: Get all meals.
+* GET /api/meal/{id}: Get a meal by ID.
+* POST /api/meal/ready: Mark meals as ready.
+
 Order Endpoints
 * POST /orders: Create a new order
+* POST /orders/{orderId}/confirm: Confirm an order.
+* POST /orders/{orderId}/cancel: Cancel an order.
+* GET /orders: Get all orders.
+* GET /orders/{id}: Get an order by ID.
 
 User Endpoints
 * POST /api/users: Create a new user
