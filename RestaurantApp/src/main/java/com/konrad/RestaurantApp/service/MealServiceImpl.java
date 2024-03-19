@@ -22,9 +22,9 @@ public class MealServiceImpl implements MealService {
     @Override
     public void readyMeals() {
 
-        Meal meal1 = new Meal("Danie 1", 20.0, 2);
-        Meal meal2 = new Meal("Danie 2", 15.0, 2);
-        Meal meal3 = new Meal("Danie 3", 25.0, 2);
+        Meal meal1 = new Meal("Dinner", 20.0, 750);
+        Meal meal2 = new Meal("Lunch", 15.0, 450);
+        Meal meal3 = new Meal("Breakfast", 10.0, 350);
 
         mealRepository.saveAll(Arrays.asList(meal1, meal2, meal3));
     }
