@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DrinkServiceIMPL implements DrinkService {
+public class DrinkServiceImpl implements DrinkService {
 
     private final DrinkRepository drinkRepository;
 
     @Autowired
-    public DrinkServiceIMPL(DrinkRepository drinkRepository) {
+    public DrinkServiceImpl(DrinkRepository drinkRepository) {
         this.drinkRepository = drinkRepository;
     }
 

@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CoffeeServiceIMPL implements CoffeeService {
+public class CoffeeServiceImpl implements CoffeeService {
 
     private final CoffeeRepository coffeeRepository;
 
     @Autowired
-    public CoffeeServiceIMPL(CoffeeRepository coffeeRepository) {
+    public CoffeeServiceImpl(CoffeeRepository coffeeRepository) {
         this.coffeeRepository = coffeeRepository;
     }
 
