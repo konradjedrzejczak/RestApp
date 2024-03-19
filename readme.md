@@ -12,6 +12,7 @@ The Restaurant App allows users to manage coffees, drinks, users, and orders. It
 
 ## Technologies Used
 * Java
+* Unit Tests
 * Spring Boot
 * Spring Data JPA
 * Hibernate
