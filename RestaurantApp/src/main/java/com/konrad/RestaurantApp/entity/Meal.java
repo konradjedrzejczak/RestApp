@@ -1,12 +1,13 @@
 package com.konrad.RestaurantApp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,4 +28,8 @@ public class Meal {
         this.price = price;
         this.calories = calories;
     }
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "meal")
+    private List<Orders> orders = new ArrayList<>();
 }

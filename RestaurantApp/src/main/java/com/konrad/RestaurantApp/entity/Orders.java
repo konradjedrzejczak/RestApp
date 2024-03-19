@@ -22,17 +22,21 @@ public class Orders {
     @ManyToOne
     private Drink drinks;
 
+    @ManyToOne
+    private Meal meal;
+
     @Column(nullable = true)
     private double price;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public Orders(User user, Coffee coffees, Drink drinks, double price) {
+    public Orders(User user, Coffee coffees, Drink drinks, Meal meal, double price) {
         this.user = user;
         this.coffees = coffees;
         this.drinks = drinks;
         this.price = price;
+        this.meal = meal;
     }
 
     public Orders() {
