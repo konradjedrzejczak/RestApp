@@ -5,10 +5,12 @@ import com.konrad.RestaurantApp.entity.Meal;
 import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class MealServiceImpl implements MealService {
 
     private final MealRepository mealRepository;
@@ -17,8 +19,8 @@ public class MealServiceImpl implements MealService {
     public MealServiceImpl(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
     }
-
-    public void readyMeals(MealDTO mealDTO) {
+    @Override
+    public void readyMeals() {
 
         Meal meal1 = new Meal("Danie 1", 20.0, 2);
         Meal meal2 = new Meal("Danie 2", 15.0, 2);

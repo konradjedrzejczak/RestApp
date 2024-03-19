@@ -29,7 +29,7 @@ public class OrderController {
 
     @PostMapping
     public Orders createOrder(@RequestBody OrderRequest orderRequest) {
-        return orderService.createOrder(orderRequest.getUserId(), orderRequest.getCoffeeId(), orderRequest.getDrinkId());
+        return orderService.createOrder(orderRequest.getUserId(), orderRequest.getCoffeeId(), orderRequest.getDrinkId(), orderRequest.getMealId());
     }
 
     @PostMapping("/{orderId}/confirm")

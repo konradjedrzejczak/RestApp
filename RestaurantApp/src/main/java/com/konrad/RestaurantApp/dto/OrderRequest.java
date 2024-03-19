@@ -10,5 +10,5 @@ public class OrderRequest {
     private Long userId;
     private Long coffeeId;
     private Long drinkId;
-
+    private Long mealId;
 }

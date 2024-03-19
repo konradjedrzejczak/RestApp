@@ -12,4 +12,6 @@ public interface MealService {
     List<Meal> getAllMeals();
 
     Meal getMealById(Long id);
+
+    void readyMeals();
 }
