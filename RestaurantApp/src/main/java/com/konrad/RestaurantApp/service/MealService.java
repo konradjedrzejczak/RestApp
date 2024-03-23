@@ -14,4 +14,6 @@ public interface MealService {
     Meal getMealById(Long id);
 
     void readyMeals();
+
+    void deleteMealById(Long id);
 }

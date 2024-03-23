@@ -18,9 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -53,22 +52,27 @@ class CoffeeServiceTest {
 
     @Test
     void testAddCoffee() {
+        // Given
+        CoffeeDTO coffeeDTO = new CoffeeDTO(true, 2, false, 5);
+        Coffee coffee = new Coffee(true, 2, false, 5);
+        when(coffeeRepository.save(any())).thenReturn(coffee);
 
-        CoffeeDTO coffeeDTO = new CoffeeDTO(true, 2, false, 3);
-        Coffee coffee = new Coffee(true, 2, false, 3);
-        when(coffeeRepository.save(any(Coffee.class))).thenReturn(coffee);
-
+        // When
         Coffee addedCoffee = coffeeService.addCoffee(coffeeDTO);
 
+        // Then
+        assertNotNull(addedCoffee);
         assertEquals(coffee, addedCoffee);
     }
-
     @Test
     void testGetCoffeeById() {
 
         Long coffeeId = 1L;
-        Coffee expectedCoffee = new Espresso();
+        Coffee expectedCoffee = new Coffee(true,2,true,4);
         when(coffeeRepository.findById(coffeeId)).thenReturn(Optional.of(expectedCoffee));
+
+        when(coffeeRepository.save(any())).thenReturn(expectedCoffee);
+        coffeeService.addCoffee(new CoffeeDTO(true, 2, true, 4));
 
         Coffee actualCoffee = coffeeService.getCoffeeById(coffeeId);
 

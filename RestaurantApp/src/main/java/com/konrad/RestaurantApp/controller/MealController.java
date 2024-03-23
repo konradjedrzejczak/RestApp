@@ -36,4 +36,9 @@ public class MealController {
     public void readyMeals() {
         mealService.readyMeals();
     }
+
+    @DeleteMapping("{drinkId}")
+    public void deleteDrinkById(Long drinkId){
+        mealService.deleteMealById(drinkId);
+    }
 }

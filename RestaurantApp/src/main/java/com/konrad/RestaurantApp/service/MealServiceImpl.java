@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MealServiceImpl implements MealService {
@@ -19,6 +20,7 @@ public class MealServiceImpl implements MealService {
     public MealServiceImpl(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
     }
+
     @Override
     public void readyMeals() {
 
@@ -44,5 +46,16 @@ public class MealServiceImpl implements MealService {
     public Meal getMealById(Long id) {
         return mealRepository.findById(id)
                 .orElseThrow(() -> new ServiceException("Meal not found"));
+    }
+
+    @Override
+    public void deleteMealById(Long id) {
+        Optional<Meal> byId = mealRepository.findById(id);
+        boolean present = byId.isPresent();
+        if (present) {
+            mealRepository.deleteById(id);
+        } else {
+            throw new ServiceException("Meal not Found");
+        }
     }
 }
