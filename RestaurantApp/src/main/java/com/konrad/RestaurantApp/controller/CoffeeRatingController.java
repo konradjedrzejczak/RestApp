@@ -1,7 +1,8 @@
 package com.konrad.RestaurantApp.controller;
 
+import com.konrad.RestaurantApp.dto.CoffeeRatingRequest;
+import com.konrad.RestaurantApp.entity.CoffeeRating;
 import com.konrad.RestaurantApp.service.CoffeeRatingService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,12 +15,10 @@ public class CoffeeRatingController {
         this.coffeeRatingService = coffeeRatingService;
     }
 
-    @PostMapping("/coffee/{coffeeId}/user/{userId}")
-    public ResponseEntity<Void> addRating(@PathVariable Long coffeeId,
-                                          @PathVariable Long userId,
-                                          @RequestParam int rating,
-                                          @RequestParam String review) {
-        coffeeRatingService.addRating(coffeeId, userId, rating, review);
-        return ResponseEntity.ok().build();
+    @PostMapping()
+    public CoffeeRating coffeeRating(@RequestBody CoffeeRatingRequest coffeeRatingRequest) {
+        return coffeeRatingService.addRating(coffeeRatingRequest.getCoffeId(), coffeeRatingRequest.getUserId(),
+                coffeeRatingRequest.getRating(), coffeeRatingRequest.getReview());
+
     }
 }

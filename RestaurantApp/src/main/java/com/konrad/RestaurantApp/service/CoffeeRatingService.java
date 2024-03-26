@@ -22,7 +22,7 @@ public class CoffeeRatingService {
         this.userRepository = userRepository;
     }
 
-    public void addRating(Long coffeeId, Long userId, int rating, String review) {
+    public CoffeeRating addRating(Long coffeeId, Long userId, int rating, String review) {
         Coffee coffee = coffeeRepository.findById(coffeeId)
                 .orElseThrow(() -> new ServiceException("Coffee not found"));
 
@@ -35,6 +35,6 @@ public class CoffeeRatingService {
         coffeeRating.setRating(rating);
         coffeeRating.setReview(review);
 
-        coffeeRatingRepository.save(coffeeRating);
+       return coffeeRatingRepository.save(coffeeRating);
     }
 }
