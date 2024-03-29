@@ -9,8 +9,10 @@ import com.konrad.RestaurantApp.repository.CoffeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CoffeeServiceImpl implements CoffeeService {
@@ -49,6 +51,14 @@ public class CoffeeServiceImpl implements CoffeeService {
     public Latte latte() {
         Latte latte = new Latte();
         return coffeeRepository.save(latte);
+    }
+
+    @Override
+    public List<Coffee> getCoffeeWithMilk() {
+        return coffeeRepository.findAll()
+                .stream()
+                .filter(Coffee::isMilk)
+                .collect(Collectors.toList());
     }
 
     @Override

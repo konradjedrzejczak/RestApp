@@ -19,5 +19,6 @@ public interface CoffeeService {
 
     Latte latte();
 
+    List<Coffee> getCoffeeWithMilk();
     void deleteCoffee(Long coffeeId);
 }

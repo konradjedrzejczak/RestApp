@@ -24,12 +24,17 @@ public class CoffeeController {
 
     @GetMapping
     public List<Coffee> getAllCoffees() {
-       return coffeeService.getAllCoffee();
+        return coffeeService.getAllCoffee();
     }
 
     @GetMapping("/{id}")
     public Coffee getCoffeeById(@PathVariable Long id) {
         return coffeeService.getCoffeeById(id);
+    }
+
+    @GetMapping("/milkCoffee")
+    public List<Coffee> getCoffeeWithMilk() {
+        return coffeeService.getCoffeeWithMilk();
     }
 
     @PostMapping
