@@ -6,7 +6,7 @@ import com.konrad.RestaurantApp.service.CoffeeRatingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ratings")
+@RequestMapping("api/ratings")
 public class CoffeeRatingController {
 
     private CoffeeRatingService coffeeRatingService;

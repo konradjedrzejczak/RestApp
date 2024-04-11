@@ -35,6 +35,6 @@ public class CoffeeRatingService {
         coffeeRating.setRating(rating);
         coffeeRating.setReview(review);
 
-       return coffeeRatingRepository.save(coffeeRating);
+        return coffeeRatingRepository.save(coffeeRating);
     }
 }

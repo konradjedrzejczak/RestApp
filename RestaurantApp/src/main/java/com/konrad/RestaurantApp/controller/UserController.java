@@ -3,7 +3,6 @@ package com.konrad.RestaurantApp.controller;
 import com.konrad.RestaurantApp.dto.UserDTO;
 import com.konrad.RestaurantApp.entity.User;
 import com.konrad.RestaurantApp.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

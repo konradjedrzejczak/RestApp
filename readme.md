@@ -5,10 +5,11 @@ This project is a simple RESTful web application for managing a restaurant's men
 
 ## Description
 
-The Restaurant App allows users to manage coffees, drinks, users, and orders. It provides endpoints for adding, retrieving, updating, and deleting data related to these entities.
+The Restaurant App allows users to manage coffees, drinks, users, meals, and orders. It provides endpoints for adding, retrieving, updating, and deleting data related to these entities.
 - Adding, viewing, and deleting coffees, drinks, and meals.
 - Creating, confirming, and canceling orders.
 - Managing customers.
+- CoffeRatingController allows users to rate coffees available in the app.
 
 ## Technologies Used
 * Java
@@ -66,3 +67,5 @@ User Endpoints
 * GET /api/users/{userId}: Retrieve a user by ID
 * DELETE /api/users/{userId}: Delete a user by ID
 
+Coffee Rating Endpoints
+* POST /api/ratings: Add a new rating for coffee
