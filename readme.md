@@ -53,7 +53,7 @@ Meal Endpoints
 * POST /api/meal/add: Add a new meal.
 * GET /api/meal: Get all meals.
 * GET /api/meal/{id}: Get a meal by ID.
-* POST /api/meal/ready: Mark meals as ready.
+* POST /api/meal/ready: Shows available dishes.
 
 Order Endpoints
 * POST /orders: Create a new order
