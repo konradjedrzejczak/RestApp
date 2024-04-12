@@ -1,6 +1,6 @@
 # Restaurant App
 
-This project is a simple RESTful web application for managing a restaurant's menu and orders.
+This project is a RESTful web application for restaurant management
 
 
 ## Description
