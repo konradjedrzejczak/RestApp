@@ -27,7 +27,7 @@ public class CoffeeServiceImpl implements CoffeeService {
     @Override
     public Coffee getCoffeeById(Long id) {
         return coffeeRepository.findById(id)
-                .orElseThrow(() -> new ServiceException("Coffe not found"));
+                .orElseThrow(() -> new ServiceException("Coffee not found"));
     }
 
     @Override
