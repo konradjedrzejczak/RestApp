@@ -23,7 +23,7 @@ The Restaurant App allows users to manage coffees, drinks, users, meals, and ord
 
 ## Installation
 1. Clone the repository:
-git clone https://github.com/yourusername/RestaurantApp.git 
+git clone https://github.com/konradjedrzejczak/RestApp
 2. Navigate to the project directory:
 cd RestaurantApp 
 3. Build the project using Maven:
