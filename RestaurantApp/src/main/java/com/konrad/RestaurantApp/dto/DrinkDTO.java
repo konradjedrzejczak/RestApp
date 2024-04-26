@@ -13,4 +13,5 @@ public class DrinkDTO {
 
     private String name;
     private double price;
+    private int calories;
 }

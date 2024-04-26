@@ -21,10 +21,12 @@ public class Drink {
 
     private String name;
     private double price;
+    private int calories;
 
-    public Drink(String name, double price) {
+    public Drink(String name, double price, int calories) {
         this.name = name;
         this.price = price;
+        this.calories = calories;
     }
 
     @JsonIgnore

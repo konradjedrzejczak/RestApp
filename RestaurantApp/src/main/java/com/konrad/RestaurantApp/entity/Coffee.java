@@ -25,12 +25,14 @@ public class Coffee {
     private int sugar;
     private boolean lactose;
     private int grindType;
+    private int calories;
 
-    public Coffee(boolean milk, int sugar, boolean lactose, int grindType) {
+    public Coffee(boolean milk, int sugar, boolean lactose, int grindType, int calories) {
         this.milk = milk;
         this.sugar = sugar;
         this.lactose = lactose;
         this.grindType = grindType;
+        this.calories = calories;
     }
 
     @JsonIgnore

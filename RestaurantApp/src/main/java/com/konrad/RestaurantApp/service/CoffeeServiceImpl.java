@@ -9,7 +9,6 @@ import com.konrad.RestaurantApp.repository.CoffeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,7 +36,7 @@ public class CoffeeServiceImpl implements CoffeeService {
 
     @Override
     public Coffee addCoffee(CoffeeDTO coffeeDTO) {
-        Coffee coffee = new Coffee(coffeeDTO.isMilk(), coffeeDTO.getSugar(), coffeeDTO.isLactose(), coffeeDTO.getGrindType());
+        Coffee coffee = new Coffee(coffeeDTO.isMilk(), coffeeDTO.getSugar(), coffeeDTO.isLactose(), coffeeDTO.getGrindType(), coffeeDTO.getCalories());
         return coffeeRepository.save(coffee);
     }
 

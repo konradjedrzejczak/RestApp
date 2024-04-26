@@ -28,15 +28,19 @@ public class Orders {
     @Column(nullable = true)
     private double price;
 
+    @Column(nullable = true)
+    private int calories;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public Orders(User user, Coffee coffees, Drink drinks, Meal meal, double price) {
+    public Orders(User user, Coffee coffees, Drink drinks, Meal meal, double price, int calories) {
         this.user = user;
         this.coffees = coffees;
         this.drinks = drinks;
         this.price = price;
         this.meal = meal;
+        this.calories = calories;
     }
 
     public Orders() {

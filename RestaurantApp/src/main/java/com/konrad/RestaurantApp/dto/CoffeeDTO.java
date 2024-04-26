@@ -15,4 +15,5 @@ public class CoffeeDTO {
     private int sugar;
     private boolean lactose;
     private int grindType;
+    private int calories;
 }

@@ -22,7 +22,7 @@ public class DrinkServiceImpl implements DrinkService {
 
     @Override
     public Drink addDrink(DrinkDTO drinkDTO) {
-        Drink drink = new Drink(drinkDTO.getName(), drinkDTO.getPrice());
+        Drink drink = new Drink(drinkDTO.getName(), drinkDTO.getPrice(), drinkDTO.getCalories());
         return drinkRepository.save(drink);
     }
 

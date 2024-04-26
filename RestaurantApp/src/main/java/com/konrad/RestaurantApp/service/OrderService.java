@@ -43,7 +43,8 @@ public class OrderService {
                 .orElseThrow(() -> new ServiceException("Meal not found"));
 
         double totalPrice = coffee.calculatePrice() + drink.getPrice() + meal.getPrice();
-        Orders orders = new Orders(user, coffee, drink, meal, totalPrice);
+        int totalCalories = coffee.getCalories() + drink.getCalories() + meal.getCalories();
+        Orders orders = new Orders(user, coffee, drink, meal, totalPrice, totalCalories);
 
         orderRepository.save(orders);
         return orders;
