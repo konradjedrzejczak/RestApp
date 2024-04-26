@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,6 +23,9 @@ public class Meal {
     private String name;
     private double price;
     private int calories;
+
+    @ManyToMany(mappedBy = "favouriteMeals")
+    private Set<User> users;
 
     public Meal(String name, double price, int calories) {
         this.name = name;

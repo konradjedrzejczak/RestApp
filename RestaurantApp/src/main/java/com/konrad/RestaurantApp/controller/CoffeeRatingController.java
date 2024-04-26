@@ -17,7 +17,7 @@ public class CoffeeRatingController {
 
     @PostMapping()
     public CoffeeRating coffeeRating(@RequestBody CoffeeRatingRequest coffeeRatingRequest) {
-        return coffeeRatingService.addRating(coffeeRatingRequest.getCoffeId(), coffeeRatingRequest.getUserId(),
+        return coffeeRatingService.addRating(coffeeRatingRequest.getCoffeeId(), coffeeRatingRequest.getUserId(),
                 coffeeRatingRequest.getRating(), coffeeRatingRequest.getReview());
 
     }

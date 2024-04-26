@@ -7,7 +7,7 @@ This project is a RESTful web application for restaurant management
 
 The Restaurant App allows users to manage coffees, drinks, users, meals, and orders. It provides endpoints for adding, retrieving, updating, and deleting data related to these entities.
 - Adding, viewing, and deleting coffees, drinks, and meals.
-- Create an order with a receipt also confirming, and canceling orders.
+- Create an order with a receipt, total calories also confirming, and canceling orders.
 - Creating users based on first name, email and phone number.
 - CoffeeRatingController allows users to rate coffees available in the app.
 - App includes exception handling and data validation mechanisms to ensure correct operation and security of operations.

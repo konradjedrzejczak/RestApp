@@ -9,9 +9,10 @@ public class Espresso extends Coffee {
     private static final int SUGAR = 0;
     private static final boolean IS_LACTOSE = false;
     private static final int GRINDTYPE = 5;
+    private static final int CALORIES = 200;
 
     public Espresso() {
-        super(IS_MILK, SUGAR, IS_LACTOSE, GRINDTYPE);
+        super(IS_MILK, SUGAR, IS_LACTOSE, GRINDTYPE, CALORIES);
     }
 }
 

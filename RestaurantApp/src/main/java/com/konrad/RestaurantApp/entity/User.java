@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users_list")
@@ -26,6 +27,9 @@ public class User {
     private String email;
     private String phoneNumber;
 
+    @ManyToMany
+    private Set<Meal> favouriteMeals;
+
     public User(String name, String email, String phoneNumber) {
         this.name = name;
         this.email = email;
@@ -39,5 +43,6 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Orders> orders = new ArrayList<>();
+
 
 }

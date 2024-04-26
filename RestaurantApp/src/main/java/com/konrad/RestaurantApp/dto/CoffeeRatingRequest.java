@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class CoffeeRatingRequest {
 
-    private Long coffeId;
+    private Long coffeeId;
     private Long userId;
     private int rating;
     private String review;

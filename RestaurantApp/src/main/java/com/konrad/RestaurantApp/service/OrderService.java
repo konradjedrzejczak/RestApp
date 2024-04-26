@@ -44,6 +44,7 @@ public class OrderService {
 
         double totalPrice = coffee.calculatePrice() + drink.getPrice() + meal.getPrice();
         int totalCalories = coffee.getCalories() + drink.getCalories() + meal.getCalories();
+
         Orders orders = new Orders(user, coffee, drink, meal, totalPrice, totalCalories);
 
         orderRepository.save(orders);
