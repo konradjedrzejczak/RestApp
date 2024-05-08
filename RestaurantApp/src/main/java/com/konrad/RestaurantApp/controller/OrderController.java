@@ -2,6 +2,7 @@ package com.konrad.RestaurantApp.controller;
 
 import com.konrad.RestaurantApp.dto.OrderRequest;
 import com.konrad.RestaurantApp.service.OrderService;
+import com.konrad.RestaurantApp.service.OrderServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import com.konrad.RestaurantApp.entity.Orders;
 
@@ -13,7 +14,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderServiceImpl orderService) {
         this.orderService = orderService;
     }
 
