@@ -30,6 +30,11 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    @PostMapping("/{userId}")
+    public void addFavouriteMeal(@PathVariable Long userId, @RequestBody Long mealId){
+        userService.addFavouriteMeal(userId, mealId);
+    }
+
     @GetMapping("/{userId}")
     public User viewUserById(@PathVariable Long userId) {
         return userService.viewUserById(userId);
