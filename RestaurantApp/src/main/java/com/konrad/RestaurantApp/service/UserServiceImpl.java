@@ -1,6 +1,7 @@
 package com.konrad.RestaurantApp.service;
 
 import com.konrad.RestaurantApp.entity.Meal;
+import com.konrad.RestaurantApp.entity.Orders;
 import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.dto.UserDTO;
 import com.konrad.RestaurantApp.entity.User;
@@ -46,6 +47,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Orders> viewAllOrders(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ServiceException("User not found"));
+        return user.getOrders();
+    }
+
+    @Override
     public void addFavouriteMeal(Long userId, Long mealId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ServiceException("User not found"));
@@ -55,7 +63,6 @@ public class UserServiceImpl implements UserService {
 
         user.getFavouriteMeals().add(meal);
         userRepository.save(user);
-
     }
 
     @Override

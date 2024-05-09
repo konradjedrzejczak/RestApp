@@ -33,8 +33,7 @@ public class UserController {
 
     @GetMapping("/{userId}/orders")
     public List<Orders> getUserOrders(@PathVariable Long userId){
-        User user = userService.viewUserById(userId);
-        return user.getOrders();
+        return userService.viewAllOrders(userId);
     }
 
     @PostMapping("/{userId}")
