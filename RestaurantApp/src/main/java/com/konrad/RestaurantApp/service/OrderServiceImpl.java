@@ -29,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
         this.mealRepository = mealRepository;
     }
 
+    @Transactional
     public Orders createOrder(Long userId, Long coffeeId, Long drinkId, Long mealId) {
         User user = userRepository.findById(userId).
                 orElseThrow(() -> new ServiceException("User not found"));

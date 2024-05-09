@@ -19,6 +19,10 @@ public class CoffeeRatingController {
     public CoffeeRating coffeeRating(@RequestBody CoffeeRatingRequest coffeeRatingRequest) {
         return coffeeRatingService.addRating(coffeeRatingRequest.getCoffeeId(), coffeeRatingRequest.getUserId(),
                 coffeeRatingRequest.getRating(), coffeeRatingRequest.getReview());
+    }
 
+    @DeleteMapping("/{coffeeRating}")
+    public void deleteRating(Long coffeeRating){
+        coffeeRatingService.deleteRating(coffeeRating);
     }
 }

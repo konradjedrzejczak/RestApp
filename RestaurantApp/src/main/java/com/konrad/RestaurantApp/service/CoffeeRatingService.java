@@ -37,4 +37,8 @@ public class CoffeeRatingService {
 
         return coffeeRatingRepository.save(coffeeRating);
     }
+
+    public void deleteRating(Long coffeeRating){
+        coffeeRatingRepository.deleteById(coffeeRating);
+    }
 }

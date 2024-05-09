@@ -1,6 +1,7 @@
 package com.konrad.RestaurantApp.controller;
 
 import com.konrad.RestaurantApp.dto.UserDTO;
+import com.konrad.RestaurantApp.entity.Orders;
 import com.konrad.RestaurantApp.entity.User;
 import com.konrad.RestaurantApp.service.UserService;
 import org.springframework.validation.annotation.Validated;
@@ -28,6 +29,12 @@ public class UserController {
     @GetMapping
     public List<User> findAllUsers() {
         return userService.findAllUsers();
+    }
+
+    @GetMapping("/{userId}/orders")
+    public List<Orders> getUserOrders(@PathVariable Long userId){
+        User user = userService.viewUserById(userId);
+        return user.getOrders();
     }
 
     @PostMapping("/{userId}")
