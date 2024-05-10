@@ -25,7 +25,9 @@ public class Coffee {
     private int sugar;
     private boolean lactose;
     private int grindType;
-    private int calories;
+
+    @Column(nullable = false, columnDefinition = "default 0")
+    private Integer calories;
 
     public Coffee(boolean milk, int sugar, boolean lactose, int grindType, int calories) {
         this.milk = milk;

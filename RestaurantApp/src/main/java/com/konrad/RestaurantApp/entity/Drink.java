@@ -21,7 +21,9 @@ public class Drink {
 
     private String name;
     private double price;
-    private int calories;
+
+    @Column(nullable = false, columnDefinition = "default 0")
+    private Integer calories;
 
     public Drink(String name, double price, int calories) {
         this.name = name;

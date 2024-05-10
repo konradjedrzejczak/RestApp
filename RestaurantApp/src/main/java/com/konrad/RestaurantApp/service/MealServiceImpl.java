@@ -38,6 +38,13 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
+    public double getMealsSum(){
+       return mealRepository.findAll().stream()
+                .mapToDouble(Meal::getPrice)
+                .sum();
+    }
+
+    @Override
     public List<Meal> getAllMeals() {
         return mealRepository.findAll();
     }

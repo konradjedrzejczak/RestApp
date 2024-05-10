@@ -13,6 +13,7 @@ public interface UserService {
 
     List<User> findAllUsers();
 
+    List<String> getAllMails();
     User viewUserById(Long userId);
 
     void deleteUser(Long userId);

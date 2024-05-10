@@ -31,13 +31,18 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    @GetMapping("/getMails")
+    public List<String> getAllMails() {
+        return userService.getAllMails();
+    }
+
     @GetMapping("/{userId}/orders")
-    public List<Orders> getUserOrders(@PathVariable Long userId){
+    public List<Orders> getUserOrders(@PathVariable Long userId) {
         return userService.viewAllOrders(userId);
     }
 
     @PostMapping("/{userId}")
-    public void addFavouriteMeal(@PathVariable Long userId, @RequestBody Long mealId){
+    public void addFavouriteMeal(@PathVariable Long userId, @RequestBody Long mealId) {
         userService.addFavouriteMeal(userId, mealId);
     }
 

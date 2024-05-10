@@ -10,6 +10,7 @@ public interface MealService {
     Meal addMeal(MealDTO mealDTO);
 
     List<Meal> getAllMeals();
+    double getMealsSum();
 
     Meal getMealById(Long id);
 

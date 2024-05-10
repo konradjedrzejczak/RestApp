@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DrinkServiceImpl implements DrinkService {
@@ -29,6 +30,13 @@ public class DrinkServiceImpl implements DrinkService {
     @Override
     public List<Drink> getAllDrink() {
         return drinkRepository.findAll();
+    }
+
+    @Override
+    public List<Drink> getDrinkWithLowCalories() {
+        return drinkRepository.findAll()
+                .stream().filter(drink -> drink.getCalories() < 15)
+                .collect(Collectors.toList());
     }
 
     @Override

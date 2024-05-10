@@ -13,5 +13,6 @@ public interface DrinkService {
 
     void deleteDrink(Long drinkId);
 
+    List<Drink> getDrinkWithLowCalories();
 }
 

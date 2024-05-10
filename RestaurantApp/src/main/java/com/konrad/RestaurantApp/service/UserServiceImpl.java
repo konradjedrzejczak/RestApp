@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,6 +39,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<String> getAllMails(){
+        return userRepository.findAll()
+                .stream()
+                .map(User::getEmail)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -23,6 +23,11 @@ public class DrinkController {
         return drinkService.getAllDrink();
     }
 
+    @GetMapping("/lowCalories")
+    public List<Drink> getDrinkWithLowCalories() {
+        return drinkService.getDrinkWithLowCalories();
+    }
+
     @PostMapping
     public Drink addDrink(@Validated @RequestBody DrinkDTO drinkDTO) {
         return drinkService.addDrink(drinkDTO);
