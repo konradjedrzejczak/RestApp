@@ -1,6 +1,7 @@
 package com.konrad.RestaurantApp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.konrad.RestaurantApp.dto.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,26 +24,37 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String username;
+    private String password;
     private String email;
-    private String phoneNumber;
+    private int phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @ManyToMany
     private Set<Meal> favouriteMeals;
-
-    public User(String name, String email, String phoneNumber) {
-        this.name = name;
+    
+    public User(String username, String password, String email, int phoneNumber) {
+        this.username = username;
+        this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
     public boolean validName() {
-        return this.name != null && this.name.length() >= 3;
+        return this.username != null && this.username.length() >= 3;
     }
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Orders> orders = new ArrayList<>();
 
+    public String getUsername() {
+        return username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

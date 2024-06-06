@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/cart.css}">
+    <script>
+        function toggleDeliveryDetails() {
+            const deliveryMethod = document.getElementById('deliveryMethod').value;
+            const deliveryDetails = document.getElementById('deliveryDetails');
+            if (deliveryMethod === 'DELIVERY') {
+                deliveryDetails.style.display = 'block';
+            } else {
+                deliveryDetails.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <h1>Your Cart</h1>
+    <ul>
+        <li th:each="coffee : ${order.coffees}">
+            <span th:text="${coffee.name + ' - Price: $' + coffee.price + ' - Calories: ' + coffee.calories}"></span>
+        </li>
+        <li th:each="drink : ${order.drinks}">
+            <span th:text="${drink.name + ' - Price: $' + drink.price + ' - Calories: ' + drink.calories}"></span>
+        </li>
+        <li th:each="meal : ${order.meals}">
+            <span th:text="${meal.name + ' - Price: $' + meal.price + ' - Calories: ' + meal.calories}"></span>
+        </li>
+    </ul>
+
+    <p>Total Price: <span th:text="${order.totalPrice}">0.0</span></p>
+    <p>Total Calories: <span th:text="${order.totalCalories}">0</span></p>
+
+    <form th:action="@{/orders/confirm}" method="post">
+        <label for="deliveryMethod">Delivery Method:</label>
+        <select name="deliveryMethod" id="deliveryMethod" onchange="toggleDeliveryDetails()">
+            <option value="IN_STORE">In store</option>
+            <option value="DELIVERY">Delivery</option>
+        </select>
+
+        <div id="deliveryDetails" style="display: none;">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street">
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="postalCode">Postal Code:</label>
+            <input type="text" id="postalCode" name="postalCode">
+        </div>
+
+        <button type="submit">Confirm Order</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="box">
+    <h1>Available Coffees</h1>
+    <ul>
+        <li th:each="coffee : ${coffees}">
+            <div class="item-details">
+                <span class="item-name" th:text="'' + ${coffee.name}">Name</span>
+                <span class="item-price" th:text="'Price: $' + ${coffee.price}">Price</span>
+                <span class="item-calories" th:text="'Calories: ' + ${coffee.calories}">Calories</span>
+                <span class="item-milk" th:text="'Milk: ' + (${coffee.milk} ? 'Yes' : 'No')">Milk</span>
+                <span class="item-sugar" th:text="'Sugar: ' + ${coffee.sugar}">Sugar</span>
+                <span class="item-lactose" th:text="'Lactose Free: ' + (${coffee.lactose} ? 'Yes' : 'No')">Lactose Free</span>
+                <span class="item-grindType" th:text="'Grind Type: ' + ${coffee.grindType}">Grind Type</span>
+            </div>
+            <form th:action="@{orders/coffees/{id}/add(id=${coffee.id})}" method="post">
+                <button type="submit">Add to Order</button>
+            </form>
+        </li>
+    </ul>
+
+    <h1>Available Drinks</h1>
+    <ul>
+        <li th:each="drink : ${drinks}">
+            <div class="item-details">
+                <span class="item-name" th:text="${drink.name}">Drink Name</span>
+                <span class="item-price" th:text="'Price: $' + ${drink.price}">Price</span>
+                <span class="item-calories" th:text="'Calories: ' + ${drink.calories}">Calories</span>
+            </div>
+            <form th:action="@{orders/drinks/{id}/add(id=${drink.id})}" method="post">
+                <button type="submit" name="addDrink">Add to Order</button>
+            </form>
+        </li>
+    </ul>
+
+    <h1>Available Meals</h1>
+    <ul>
+        <li th:each="meal : ${meals}">
+            <div class="item-details">
+                <span class="item-name" th:text="${meal.name}">Meal Name</span>
+                <span class="item-price" th:text="'Price: $' + ${meal.price}">Price</span>
+                <span class="item-calories" th:text="'Calories: ' + ${meal.calories}">Calories</span>
+            </div>
+            <form th:action="@{orders/meals/{id}/add(id=${meal.id})}" method="post">
+                <button type="submit" name="addMeal">Add to Order</button>
+            </form>
+        </li>
+    </ul>
+
+    <a th:href="@{/orders/cart}">Go to Cart</a>
+</div>
+</body>
+</html>

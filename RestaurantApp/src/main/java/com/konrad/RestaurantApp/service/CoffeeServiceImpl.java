@@ -1,10 +1,8 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.dto.CoffeeDTO;
 import com.konrad.RestaurantApp.entity.Coffee;
-import com.konrad.RestaurantApp.entity.Espresso;
-import com.konrad.RestaurantApp.entity.Latte;
+import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.repository.CoffeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,25 +29,13 @@ public class CoffeeServiceImpl implements CoffeeService {
 
     @Override
     public List<Coffee> getAllCoffee() {
-       return coffeeRepository.findAll();
+        return coffeeRepository.findAll();
     }
 
     @Override
     public Coffee addCoffee(CoffeeDTO coffeeDTO) {
-        Coffee coffee = new Coffee(coffeeDTO.isMilk(), coffeeDTO.getSugar(), coffeeDTO.isLactose(), coffeeDTO.getGrindType(), coffeeDTO.getCalories());
+        Coffee coffee = new Coffee(coffeeDTO.getName(), coffeeDTO.isMilk(), coffeeDTO.getSugar(), coffeeDTO.isLactose(), coffeeDTO.getGrindType(), coffeeDTO.getCalories(), coffeeDTO.getPrice());
         return coffeeRepository.save(coffee);
-    }
-
-    @Override
-    public Espresso espresso() {
-        Espresso espresso = new Espresso();
-        return coffeeRepository.save(espresso);
-    }
-
-    @Override
-    public Latte latte() {
-        Latte latte = new Latte();
-        return coffeeRepository.save(latte);
     }
 
     @Override

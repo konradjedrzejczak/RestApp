@@ -34,6 +34,6 @@ public class Meal {
     }
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "meal")
+    @ManyToMany(mappedBy = "meals")
     private List<Orders> orders = new ArrayList<>();
 }

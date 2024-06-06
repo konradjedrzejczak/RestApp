@@ -13,6 +13,8 @@ import java.util.List;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
+    private Orders currentOrder = new Orders();
+
     private final OrderRepository orderRepository;
     private final DrinkRepository drinkRepository;
     private final CoffeeRepository coffeeRepository;
@@ -29,27 +31,52 @@ public class OrderServiceImpl implements OrderService {
         this.mealRepository = mealRepository;
     }
 
+    @Override
+    public void addCoffeeToOrder(Coffee coffee) {
+        currentOrder.getCoffees().add(coffee);
+        currentOrder.setTotalPrice(currentOrder.getTotalPrice() + coffee.calculatePrice());
+        currentOrder.setTotalCalories(currentOrder.getTotalCalories() + coffee.getCalories());
+    }
+
+    @Override
+    public void addDrinkToOrder(Drink drink) {
+        currentOrder.getDrinks().add(drink);
+        currentOrder.setTotalPrice(currentOrder.getTotalPrice() + drink.getPrice());
+        currentOrder.setTotalCalories(currentOrder.getTotalCalories() + drink.getCalories());
+    }
+
+    @Override
+    public void addMealToOrder(Meal meal) {
+        currentOrder.getMeals().add(meal);
+        currentOrder.setTotalPrice(currentOrder.getTotalPrice() + meal.getPrice());
+        currentOrder.setTotalCalories(currentOrder.getTotalCalories() + meal.getCalories());
+    }
+
+    @Override
+    public Orders getCurrentOrder() {
+        return currentOrder;
+    }
+
     @Transactional
-    public Orders createOrder(Long userId, Long coffeeId, Long drinkId, Long mealId) {
-        User user = userRepository.findById(userId).
-                orElseThrow(() -> new ServiceException("User not found"));
+    public void confirmOrder(Orders order) {
+        currentOrder.setOrderStatus(OrderStatus.NEW);
+        orderRepository.save(order);
+        currentOrder = new Orders();
+    }
 
-        Coffee coffee = coffeeRepository.findById(coffeeId)
-                .orElseThrow(() -> new ServiceException("Coffee not found"));
-
-        Drink drink = drinkRepository.findById(drinkId)
-                .orElseThrow(() -> new ServiceException("Drink not found"));
-
-        Meal meal = mealRepository.findById(mealId)
-                .orElseThrow(() -> new ServiceException("Meal not found"));
-
-        double totalPrice = coffee.calculatePrice() + drink.getPrice() + meal.getPrice();
-        int totalCalories = coffee.getCalories() + drink.getCalories() + meal.getCalories();
-
-        Orders orders = new Orders(user, coffee, drink, meal, totalPrice, totalCalories);
-
-        orderRepository.save(orders);
-        return orders;
+    public Orders updateOrderStatus(Long orderId, OrderStatus status) {
+        Orders order = orderRepository.findById(orderId).orElse(null);
+        if (order != null) {
+            order.setOrderStatus(status);
+            orderRepository.save(order);
+        }
+        return order;
+    }
+    @Override
+    public void setUserForCurrentOrder(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ServiceException("User not found"));
+        currentOrder.setUser(user);
     }
 
     public List<Orders> getAllOrders() {

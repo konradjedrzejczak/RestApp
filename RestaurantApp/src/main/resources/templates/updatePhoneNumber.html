@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Email</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/updatePhoneMail.css}">
+</head>
+<body>
+<div class="box">
+    <h1>Update Phone Number</h1>
+    <form th:action="@{/api/users/updatePhone}" method="post">
+        <div class="item-details">
+            <label for="number">New Number:</label>
+            <input type="number" id="number" name="number" required>
+        </div>
+        <button type="submit">Update Number</button>
+    </form>
+    <button onclick="window.location.href='/'">Back</button>
+</div>
+</body>
+</html>

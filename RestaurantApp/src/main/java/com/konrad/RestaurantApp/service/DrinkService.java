@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface DrinkService {
 
+    Drink getDrinkById(Long id);
     Drink addDrink(DrinkDTO drinkDTO);
 
     List<Drink> getAllDrink();

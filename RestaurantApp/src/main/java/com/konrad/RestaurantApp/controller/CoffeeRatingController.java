@@ -3,9 +3,10 @@ package com.konrad.RestaurantApp.controller;
 import com.konrad.RestaurantApp.dto.CoffeeRatingRequest;
 import com.konrad.RestaurantApp.entity.CoffeeRating;
 import com.konrad.RestaurantApp.service.CoffeeRatingService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("api/ratings")
 public class CoffeeRatingController {
 

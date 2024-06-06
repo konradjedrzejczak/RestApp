@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarządzanie zamówieniami</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/manageOrders.css}">
+</head>
+<body>
+<div class="box">
+    <h1>Lista zamówień</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Store?</th>
+            <th>Cart</th>       <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.user.username}"></td>
+            <td th:text="${order.orderStatus}"></td>
+            <td th:text="${order.totalPrice}"></td>
+            <td th:text="${order.deliveryMethod}"></td>
+            <td>
+                <span th:each="coffee : ${order.coffees}" th:text="${coffee.name} "></span>
+                <span th:each="drink : ${order.drinks}" th:text="${drink.name} "></span>
+                <span th:each="meal : ${order.meals}" th:text="${meal.name} "></span>
+            </td>
+            <td>
+                <form th:action="@{/orders/{orderId}/confirm(orderId=${order.id})}" method="post" style="display:inline;">
+                    <button type="submit">Confirm</button>
+                </form>
+                <form th:action="@{/orders/{orderId}/cancel(orderId=${order.id})}" method="post" style="display:inline;">
+                    <button type="submit">Cancel</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/home}">Back</a>
+</div>
+</body>
+</html>

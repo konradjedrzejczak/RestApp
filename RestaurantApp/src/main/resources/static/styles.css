@@ -1,0 +1,83 @@
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.box {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border: solid 5px transparent;
+    border-radius: 2em;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, #213, #112 5%, #112 60%, #213 95%);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Stylowanie listy elementów */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Stylowanie poszczególnych elementów */
+.item-details {
+    margin-bottom: 20px;
+}
+
+/* Stylowanie przycisków */
+button {
+    background-color: #08f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+    animation: border-pulse 2s infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0056b3;
+    animation: none; /* Wyłączenie animacji przy najechaniu kursorem */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Dodanie większego cienia po najechaniu kursorem */
+}
+
+/* Stylowanie linków */
+a {
+    color: #08f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Efekt hover dla elementów listy */
+li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

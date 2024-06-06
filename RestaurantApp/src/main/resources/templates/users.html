@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Użytkownicy</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/usersList.css}">
+</head>
+<body>
+<div class="container">
+  <h1>                Users list           </h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.phoneNumber}"></td>
+      <td th:text="${user.email}"></td>
+      <td>
+        <a th:href="@{/api/users/delete/{userId}(userId=${user.id})}">Usuń</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/home}">Back</a>
+</div>
+</body>
+</html>

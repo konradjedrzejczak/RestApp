@@ -1,0 +1,54 @@
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.container {
+    text-align: center;
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie listy opcji */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Stylowanie opcji */
+.options a {
+    background-color: #08f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Dodanie cienia */
+}
+
+.options a:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}

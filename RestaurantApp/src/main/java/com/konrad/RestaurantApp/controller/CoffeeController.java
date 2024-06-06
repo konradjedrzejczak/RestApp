@@ -2,59 +2,62 @@ package com.konrad.RestaurantApp.controller;
 
 import com.konrad.RestaurantApp.dto.CoffeeDTO;
 import com.konrad.RestaurantApp.entity.Coffee;
-import com.konrad.RestaurantApp.entity.Espresso;
-import com.konrad.RestaurantApp.entity.Latte;
 import com.konrad.RestaurantApp.service.CoffeeService;
+import com.konrad.RestaurantApp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/coffees")
 public class CoffeeController {
 
     private final CoffeeService coffeeService;
+    private final OrderService orderService;
 
     @Autowired
-    public CoffeeController(CoffeeService coffeeService) {
+    public CoffeeController(CoffeeService coffeeService, OrderService orderService) {
         this.coffeeService = coffeeService;
+        this.orderService = orderService;
     }
 
     @GetMapping
-    public List<Coffee> getAllCoffees() {
-        return coffeeService.getAllCoffee();
+    public String viewAllCoffees(Model model) {
+        List<Coffee> coffees = coffeeService.getAllCoffee();
+        model.addAttribute("coffees", coffees);
+        return "coffees";
     }
 
     @GetMapping("/{id}")
-    public Coffee getCoffeeById(@PathVariable Long id) {
-        return coffeeService.getCoffeeById(id);
+    public String getCoffeeById(@PathVariable Long id, Model model) {
+        model.addAttribute("coffee", coffeeService.getCoffeeById(id));
+        return "coffeeDetail";
     }
 
     @GetMapping("/milkCoffee")
-    public List<Coffee> getCoffeeWithMilk() {
-        return coffeeService.getCoffeeWithMilk();
+    public String getCoffeeWithMilk(Model model) {
+        model.addAttribute("coffees", coffeeService.getCoffeeWithMilk());
+        return "coffeeList";
     }
 
-    @PostMapping
-    public Coffee addCoffee(@Validated @RequestBody CoffeeDTO coffeeDTO) {
-        return coffeeService.addCoffee(coffeeDTO);
+    @GetMapping("/add")
+    public String addCoffeeForm(Model model) {
+        model.addAttribute("coffee", new CoffeeDTO());
+        return "add";
     }
 
-    @PostMapping("/espresso")
-    public Espresso brewEspresso() {
-        return coffeeService.espresso();
+    @PostMapping("/add")
+    public String addCoffee(@ModelAttribute CoffeeDTO coffeeDTO) {
+        coffeeService.addCoffee(coffeeDTO);
+        return "redirect:/coffee/list";
     }
 
-    @PostMapping("/latte")
-    public Latte brewLatte() {
-        return coffeeService.latte();
-    }
-
-    @DeleteMapping("/{coffeeId}")
-    public void deleteCoffee(@PathVariable Long coffeeId) {
+    @GetMapping("/delete/{coffeeId}")
+    public String deleteCoffee(@PathVariable Long coffeeId) {
         coffeeService.deleteCoffee(coffeeId);
+        return "redirect:/api/coffees";
     }
-
 }

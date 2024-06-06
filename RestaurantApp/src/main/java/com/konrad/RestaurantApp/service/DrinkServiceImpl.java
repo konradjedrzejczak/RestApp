@@ -1,8 +1,8 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.dto.DrinkDTO;
 import com.konrad.RestaurantApp.entity.Drink;
+import com.konrad.RestaurantApp.exception.ServiceException;
 import com.konrad.RestaurantApp.repository.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +25,12 @@ public class DrinkServiceImpl implements DrinkService {
     public Drink addDrink(DrinkDTO drinkDTO) {
         Drink drink = new Drink(drinkDTO.getName(), drinkDTO.getPrice(), drinkDTO.getCalories());
         return drinkRepository.save(drink);
+    }
+
+    @Override
+    public Drink getDrinkById(Long id) {
+        return drinkRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("Coffee not found"));
     }
 
     @Override

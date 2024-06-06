@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Kaw</title>
+</head>
+<body>
+<h1>Lista Kaw</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Milk</th>
+        <th>Sugar</th>
+        <th>Lactose</th>
+        <th>Grind Type</th>
+        <th>Calories</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="coffee : ${coffees}">
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.milk}"></td>
+        <td th:text="${coffee.sugar}"></td>
+        <td th:text="${coffee.lactose}"></td>
+        <td th:text="${coffee.grindType}"></td>
+        <td th:text="${coffee.calories}"></td>
+        <td>
+            <a th:href="@{'/coffees/' + ${coffee.id}}">View</a>
+            <a th:href="@{'/coffees/delete/' + ${coffee.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/coffees/add">Add Coffee</a>
+</body>
+</html>

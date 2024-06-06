@@ -1,0 +1,76 @@
+/* drinks.css */
+
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.container {
+    width: auto;
+    max-width: 1000px;
+    padding: 20px;
+    border: solid 5px transparent;
+    border-radius: 2em;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, #213, #112 5%, #112 60%, #213 95%);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Stylowanie tabeli */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+th {
+    background-color: #334;
+    white-space: nowrap;
+}
+
+td {
+    background-color: #223;
+}
+
+/* Stylowanie kolumn */
+th:nth-child(4), td:nth-child(4) {  /* Akcje */
+    width: 15%;
+    min-width: 100px;  /* Minimalna szerokość */
+}
+
+/* Stylowanie linków */
+a {
+    color: #08f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}

@@ -1,12 +1,12 @@
 package com.konrad.RestaurantApp.service;
 
-import com.konrad.RestaurantApp.entity.Orders;
+import com.konrad.RestaurantApp.dto.DeliveryMethod;
+import com.konrad.RestaurantApp.entity.*;
 
 import java.util.List;
 
 public interface OrderService {
 
-    Orders createOrder(Long userId, Long coffeeId, Long drinkId, Long mealId);
 
     List<Orders> getAllOrders();
 
@@ -16,5 +16,18 @@ public interface OrderService {
 
     Orders cancelOrder(Long orderId);
 
+    void addCoffeeToOrder(Coffee coffee);
+
+    void addDrinkToOrder(Drink drink);
+
+    void addMealToOrder(Meal meal);
+
+    Orders getCurrentOrder();
+
+    void confirmOrder(Orders order);
+
+    Orders updateOrderStatus(Long orderId, OrderStatus status);
+
+    void setUserForCurrentOrder(Long userId);
 
 }

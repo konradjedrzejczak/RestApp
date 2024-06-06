@@ -11,9 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CoffeeDTO {
 
+    private String name;
     private boolean milk;
     private int sugar;
     private boolean lactose;
     private int grindType;
     private int calories;
+    private int price;
 }

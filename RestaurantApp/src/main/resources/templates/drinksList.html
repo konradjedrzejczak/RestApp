@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drinks list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/drinks.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Drinks list</h1>
+    <a th:href="@{/api/drink/add}">Add drink</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Calories</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="drink : ${drinks}">
+            <td th:text="${drink.name}"></td>
+            <td th:text="${drink.price}"></td>
+            <td th:text="${drink.calories}"></td>
+            <td>
+                <a th:href="@{/api/drink/delete/{drinkId}(drinkId=${drink.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/home}">Back</a>
+</div>
+</body>
+</html>

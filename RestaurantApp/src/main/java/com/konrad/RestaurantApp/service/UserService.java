@@ -13,7 +13,10 @@ public interface UserService {
 
     List<User> findAllUsers();
 
+    User findByUsername(String username);
+
     List<String> getAllMails();
+
     User viewUserById(Long userId);
 
     void deleteUser(Long userId);
@@ -21,5 +24,11 @@ public interface UserService {
     void addFavouriteMeal(Long userId, Long mealId);
 
     List<Orders> viewAllOrders(Long userId);
+
+    User getCurrentUser();
+
+    void updateUserMail(String mail);
+
+    void updateUserPhone(int phoneNumber);
 
 }

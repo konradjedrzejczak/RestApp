@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Szczegóły Kawy</title>
+</head>
+<body>
+<h1>Szczegóły Kawy</h1>
+<div>
+    <p>ID: <span th:text="${coffee.id}"></span></p>
+    <p>Milk: <span th:text="${coffee.milk}"></span></p>
+    <p>Sugar: <span th:text="${coffee.sugar}"></span></p>
+    <p>Lactose: <span th:text="${coffee.lactose}"></span></p>
+    <p>Grind Type: <span th:text="${coffee.grindType}"></span></p>
+    <p>Calories: <span th:text="${coffee.calories}"></span></p>
+</div>
+<a href="/coffees">Back to List</a>
+</body>
+</html>

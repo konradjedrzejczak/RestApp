@@ -1,0 +1,78 @@
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.container {
+    width: auto;
+    max-width: 1000px;
+    padding: 20px;
+    border: solid 5px transparent;
+    border-radius: 2em;
+    position: relative;
+    background: linear-gradient(to right, #213, #112 5%, #112 60%, #213 95%);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Stylowanie tabeli */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #334;
+}
+
+td {
+    background-color: #223;
+}
+
+/* Stylowanie kolumn */
+th:nth-child(8), td:nth-child(8) {
+    width: 15%;
+    min-width: 120px;
+}
+
+/* Stylowanie linków */
+a {
+    color: #08f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+a:hover {
+    color: #0056b3;
+}

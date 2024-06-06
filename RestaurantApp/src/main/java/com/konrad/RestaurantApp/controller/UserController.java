@@ -4,12 +4,15 @@ import com.konrad.RestaurantApp.dto.UserDTO;
 import com.konrad.RestaurantApp.entity.Orders;
 import com.konrad.RestaurantApp.entity.User;
 import com.konrad.RestaurantApp.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/users")
 @Validated
 public class UserController {
@@ -27,8 +30,16 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> findAllUsers() {
-        return userService.findAllUsers();
+    public String viewAllUsers(Model model) {
+        List<User> users = userService.findAllUsers();
+        model.addAttribute("users", users);
+        return "users";
+    }
+
+    @GetMapping("/delete/{userId}")
+    public String deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+        return "redirect:/users";
     }
 
     @GetMapping("/getMails")
@@ -51,8 +62,37 @@ public class UserController {
         return userService.viewUserById(userId);
     }
 
-    @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable Long userId) {
-        userService.deleteUser(userId);
+
+    @GetMapping("/me")
+    public String viewCurrentUser(Model model, Authentication authentication) {
+        String username = authentication.getName();
+        User user = userService.findByUsername(username);
+        model.addAttribute("user", user);
+        return "userDetails";
+    }
+
+
+    @GetMapping("/updateMail")
+    public String updateMailPage(Model model) {
+        model.addAttribute("user", userService.getCurrentUser());
+        return "updateMail";
+    }
+
+    @PostMapping("/updateEmail")
+    public String updateEmail(@RequestParam("email") String email) {
+        userService.updateUserMail(email);
+        return "redirect:/api/users/me";
+    }
+
+    @GetMapping("/updatePhone")
+    public String updatePhonePage(Model model) {
+        model.addAttribute("user", userService.getCurrentUser());
+        return "updatePhoneNumber";
+    }
+
+    @PostMapping("/updatePhone")
+    public String updatePhone(@RequestParam("number") int number) {
+        userService.updateUserPhone(number);
+        return "redirect:/api/users/me";
     }
 }

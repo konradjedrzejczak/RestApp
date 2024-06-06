@@ -1,0 +1,94 @@
+/* drinks.css */
+
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.container {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border: solid 5px transparent;
+    border-radius: 2em;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, #213, #112 5%, #112 60%, #213 95%);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Stylowanie formularza */
+form {
+    width: 100%;
+}
+
+.item-details {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #334;
+    color: white;
+}
+
+button {
+    background-color: #08f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+    animation: border-pulse 2s infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0056b3;
+    animation: none;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Stylowanie linków */
+a {
+    color: #08f;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+}
+
+a:hover {
+    color: #0056b3;
+}

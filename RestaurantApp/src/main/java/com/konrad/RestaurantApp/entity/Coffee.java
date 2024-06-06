@@ -21,20 +21,26 @@ public class Coffee {
     private int id;
 
     @Getter
+    private String name;
     private boolean milk;
     private int sugar;
     private boolean lactose;
     private int grindType;
 
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    private Integer price;
+
     @Column(nullable = false, columnDefinition = "default 0")
     private Integer calories;
 
-    public Coffee(boolean milk, int sugar, boolean lactose, int grindType, int calories) {
+    public Coffee(String name, boolean milk, int sugar, boolean lactose, int grindType, int calories, int price) {
+        this.name = name;
         this.milk = milk;
         this.sugar = sugar;
         this.lactose = lactose;
         this.grindType = grindType;
         this.calories = calories;
+        this.price = price;
     }
 
     @JsonIgnore

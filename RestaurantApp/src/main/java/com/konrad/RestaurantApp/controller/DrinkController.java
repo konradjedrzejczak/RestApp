@@ -3,24 +3,36 @@ package com.konrad.RestaurantApp.controller;
 import com.konrad.RestaurantApp.dto.DrinkDTO;
 import com.konrad.RestaurantApp.entity.Drink;
 import com.konrad.RestaurantApp.service.DrinkService;
-import org.springframework.validation.annotation.Validated;
+import com.konrad.RestaurantApp.service.OrderService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/drink")
 public class DrinkController {
 
     private final DrinkService drinkService;
+    private final OrderService orderService;
 
-    public DrinkController(DrinkService drinkService) {
+    public DrinkController(DrinkService drinkService, OrderService orderService) {
         this.drinkService = drinkService;
+        this.orderService = orderService;
     }
 
     @GetMapping
-    public List<Drink> getAllDrinks() {
-        return drinkService.getAllDrink();
+    public String viewAllDrinks(Model model) {
+        List<Drink> drinks = drinkService.getAllDrink();
+        model.addAttribute("drinks", drinks);
+        return "drinksList";
+    }
+
+    @GetMapping("/add")
+    public String showAddDrinkForm(Model model) {
+        model.addAttribute("drink", new DrinkDTO());
+        return "addDrink";
     }
 
     @GetMapping("/lowCalories")
@@ -28,13 +40,24 @@ public class DrinkController {
         return drinkService.getDrinkWithLowCalories();
     }
 
-    @PostMapping
-    public Drink addDrink(@Validated @RequestBody DrinkDTO drinkDTO) {
-        return drinkService.addDrink(drinkDTO);
+    @PostMapping("/add")
+    public String addDrink(@ModelAttribute DrinkDTO drinkDTO) {
+        drinkService.addDrink(drinkDTO);
+        return "redirect:/";
     }
 
-    @DeleteMapping("/{drinkId}")
-    public void deleteDrink(@PathVariable Long drinkId) {
+    @PostMapping("/{id}/add")
+    public String addDrinkToOrder(@PathVariable Long id) {
+        Drink drink = drinkService.getDrinkById(id);
+        if (drink != null) {
+            orderService.addDrinkToOrder(drink);
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{drinkId}")
+    public String deleteDrink(@PathVariable Long drinkId) {
         drinkService.deleteDrink(drinkId);
+        return "redirect:/api/drink";
     }
 }

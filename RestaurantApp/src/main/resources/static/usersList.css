@@ -1,0 +1,82 @@
+/* Resetowanie domyślnych stylów dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stylowanie całej strony */
+html, body {
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Stylowanie kontenera */
+.container {
+    width: auto;
+    max-width: 1200px;
+    padding: 20px;
+    border: solid 5px transparent;
+    border-radius: 2em;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(to right, #213, #112 5%, #112 60%, #213 95%);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Stylowanie tytułów */
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Stylowanie tabeli */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #444;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #334;
+}
+
+td {
+    background-color: #223;
+}
+
+/* Stylowanie kolumn */
+th, td {
+    width: 20%;
+}
+
+/* Stylowanie linków */
+a {
+    color: #08f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Stylowanie linków z focus */
+a:focus {
+    outline: 2px solid #08f;
+    outline-offset: 2px;
+}

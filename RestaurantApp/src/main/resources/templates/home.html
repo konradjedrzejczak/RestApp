@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/homepage.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Hello, <span th:text="${username}">konrad</span>!</h1>
+    <div class="options">
+        <a th:href="@{/api/users}">Manage users </a>
+        <a th:href="@{/api/coffees}">Manage coffees</a>
+        <a th:href="@{/api/meal}">Manage dishes</a>
+        <a th:href="@{/api/drink}">Manage drinks</a>
+        <a th:href="@{/orders/manage}">Manage orders</a>
+    </div>
+</div>
+</body>
+</html>

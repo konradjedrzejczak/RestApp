@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Summary</title>
+</head>
+<body>
+<div class="box">
+    <h1>Order Summary</h1>
+    <ul>
+        <li th:each="coffee : ${order.coffees}">
+            <span th:text="${coffee.id + ' - Price: $' + coffee.price + ' - Calories: ' + coffee.calories}"></span>
+        </li>
+        <li th:each="drink : ${order.drinks}">
+            <span th:text="${drink.name + ' - Price: $' + drink.price + ' - Calories: ' + drink.calories}"></span>
+        </li>
+        <li th:each="meal : ${order.meals}">
+            <span th:text="${meal.name + ' - Price: $' + meal.price + ' - Calories: ' + meal.calories}"></span>
+        </li>
+    </ul>
+
+    <p>Total Price: <span th:text="${order.totalPrice}">0.0</span></p>
+    <p>Total Calories: <span th:text="${order.totalCalories}">0</span></p>
+
+    <p><strong>Delivery Method:</strong> <span th:text="${order.deliveryMethod}"></span></p>
+    <p th:if="${order.deliveryMethod == 'DELIVERY'}">
+        <strong>Delivery Details:</strong><br>
+        <span th:text="${order.firstName}"></span> <span th:text="${order.lastName}"></span><br>
+        <span th:text="${order.street}"></span><br>
+        <span th:text="${order.city}"></span>, <span th:text="${order.postalCode}"></span>
+    </p>
+    <button onclick="window.location.href='/'">Go to Home</button>
+</div>
+</body>
+</html>

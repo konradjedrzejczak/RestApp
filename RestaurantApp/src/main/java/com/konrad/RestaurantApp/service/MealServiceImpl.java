@@ -56,11 +56,11 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public void deleteMealById(Long id) {
-        Optional<Meal> byId = mealRepository.findById(id);
+    public void deleteMealById(Long mealId) {
+        Optional<Meal> byId = mealRepository.findById(mealId);
         boolean present = byId.isPresent();
         if (present) {
-            mealRepository.deleteById(id);
+            mealRepository.deleteById(mealId);
         } else {
             throw new ServiceException("Meal not Found");
         }

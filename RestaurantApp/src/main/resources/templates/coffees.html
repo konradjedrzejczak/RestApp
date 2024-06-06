@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modyfikuj Kawy</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/coffees.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Coffee list</h1>
+    <a th:href="@{/api/coffees/add}">Add coffee</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Milk</th>
+            <th>Sugar</th>
+            <th>Lactose</th>
+            <th>Grind Type</th>
+            <th>Calories</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coffee : ${coffees}">
+            <td th:text="${coffee.name}"></td>
+            <td th:text="${coffee.id}"></td>
+            <td th:text="${coffee.milk}"></td>
+            <td th:text="${coffee.sugar}"></td>
+            <td th:text="${coffee.lactose}"></td>
+            <td th:text="${coffee.grindType}"></td>
+            <td th:text="${coffee.calories}"></td>
+            <td>
+                <a th:href="@{/api/coffees/delete/{coffeeId}(coffeeId=${coffee.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/home}">Back</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje dane</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/userDetails.css}">
+</head>
+<body>
+<div class="box">
+    <h1>My profile</h1>
+    <ul>
+        <li><strong>Username:</strong> <span th:text="${user.username}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${user.email}"></span> <button onclick="window.location.href='/api/users/updateMail'">Update</button></li>
+        <li><strong>Phone number:</strong> <span th:text="${user.phoneNumber}"></span> <button onclick="window.location.href='/api/users/updatePhone'">Update</button></li>
+        <li><strong>Permissions:</strong> <span th:text="${user.role}"></span></li>
+    </ul>
+    <button onclick="window.location.href='/'">Back</button>
+</div>
+</body>
+</html>
