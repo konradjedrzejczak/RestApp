@@ -20,7 +20,9 @@ The Restaurant App allows users to manage coffees, drinks, users, meals, and ord
 * Hibernate
 * Lombok
 * PostgreSQL
-
+* Thymeleaf
+* CSS
+* 
 ## Installation
 1. Clone the repository:
 git clone https://github.com/konradjedrzejczak/RestApp
