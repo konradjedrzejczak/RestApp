@@ -29,16 +29,16 @@ public class AuthController {
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("userDTO", new UserDTO());
-        return "register"; // Zwracamy nazwę widoku rejestracji
+        return "register";
     }
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult) throws ServiceException {
         if (bindingResult.hasErrors()) {
-            return "register"; // Ponownie wyświetlamy formularz rejestracji w przypadku błędów walidacji
+            return "register";
         }
-        // Jeśli dane są poprawne, tworzymy nowego użytkownika
+
         userService.createUser(userDTO);
-        return "redirect:/"; // Po udanej rejestracji przekierowujemy na stronę logowania
+        return "redirect:/";
     }
 }
