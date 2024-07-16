@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void addCoffeeToOrder(Coffee coffee) {
         currentOrder.getCoffees().add(coffee);
-        currentOrder.setTotalPrice(currentOrder.getTotalPrice() + coffee.calculatePrice());
+        currentOrder.setTotalPrice(currentOrder.getTotalPrice() + coffee.getPrice());
         currentOrder.setTotalCalories(currentOrder.getTotalCalories() + coffee.getCalories());
     }
 

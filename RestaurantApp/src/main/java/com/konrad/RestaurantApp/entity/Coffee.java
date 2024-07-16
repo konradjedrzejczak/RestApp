@@ -47,25 +47,4 @@ public class Coffee {
     @ManyToMany(mappedBy = "coffees")
     private List<Orders> orders = new ArrayList<>();
 
-    public double calculatePrice() {
-        double basePrice = 0;
-
-        if (milk) {
-            basePrice += 2;
-        }
-
-        if (sugar > 5) {
-            basePrice += 1;
-        }
-
-        if (lactose) {
-            basePrice += 1.5;
-        }
-
-        if (grindType > 5) {
-            basePrice += 2;
-        }
-
-        return basePrice;
-    }
 }
