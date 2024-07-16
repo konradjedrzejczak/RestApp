@@ -84,7 +84,7 @@ public class OrderController {
 
     @GetMapping("/confirmationMessage")
     public String orderConfirmationMessage(Model model) {
-        model.addAttribute("message", "Twoje zamówienie zostało złożone.");
+        model.addAttribute("message", "Your order has been placed.");
         return "confirmationMessage";
     }
 
